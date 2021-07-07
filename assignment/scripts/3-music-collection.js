@@ -9,7 +9,7 @@ let collection = [];
 //Creating a function called AddToCollection that
 //takes two parameters (title, artist, yearsPublished)
 
-function AddToCollection(artist, title, yearsPublished) {
+function AddToCollection(title,artist, yearsPublished) {
   console.log("In AddToColection");
   //creating album object
   const album = {
@@ -25,9 +25,25 @@ function AddToCollection(artist, title, yearsPublished) {
   return album;
 } //end AddToCollection
 
+//Creating a function ShowCollection.
+//This function should take an array as a parameter
+
+function showCollection (array) {
+    
+    //using for of to loop through the array
+    for ( let getCollection of array ){
+
+        //login the getcollection variable to the console
+       console.log(`Album Information: ${getCollection.title} ${getCollection.artist} ${getCollection.yearsPublished}`)
+        //console.log(collectionInfo);
+    }
+
+    //returning the array
+    return array
+}// end showCollection
+
+
 /*---------Calling && Testing------------------*/
-
-
 //Adding 6 Artists to the collection
 AddToCollection("DMX", "...And Then There Was X", 1999);
 AddToCollection("Nas", "illmatic X", 1994);
@@ -37,4 +53,7 @@ AddToCollection("Dr. Dre", "Chronic 2001", 1999);
 AddToCollection("Jay Z", "Reasonable Doubt", 1996);
 
 //Loging the collection to the console
-console.log(collection); // Output should be objects of the 6 artist that I added to the collection
+console.log("The Array should have 6 object elements", collection); // Output should be objects of the 6 artist that I added to the collection
+
+//loging  the showCollection that takes collection as an argument to the console
+console.log(showCollection(collection))
