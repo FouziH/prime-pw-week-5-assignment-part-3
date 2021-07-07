@@ -9,7 +9,7 @@ let collection = [];
 //Creating a function called AddToCollection that
 //takes two parameters (title, artist, yearsPublished)
 
-function AddToCollection(title,artist, yearsPublished) {
+function AddToCollection(title, artist, yearsPublished) {
   console.log("In AddToColection");
   //creating album object
   const album = {
@@ -22,26 +22,40 @@ function AddToCollection(title,artist, yearsPublished) {
   //array
   collection.push(album);
 
+  //shipping the newly created object
   return album;
 } //end AddToCollection
 
 //Creating a function ShowCollection.
 //This function should take an array as a parameter
 
-function showCollection (array) {
-    
-    //using for of to loop through the array
-    for ( let getCollection of array ){
+function showCollection(array) {
+  //using for of to loop through the array
+  for (let getCollection of array) {
+    //login the getcollection variable to the console
+    console.log(
+      `Album Information: ${getCollection.title} ${getCollection.artist} ${getCollection.yearsPublished}`
+    );
+    //console.log(collectionInfo);
+  }
 
-        //login the getcollection variable to the console
-       console.log(`Album Information: ${getCollection.title} ${getCollection.artist} ${getCollection.yearsPublished}`)
-        //console.log(collectionInfo);
+  //returning the array
+  return array;
+} // end showCollection
+
+//Adding a function name findByArtist
+
+function findByArtist(string) {
+  //creating a new array called newArray and initialized to and empty array
+  let newArray = [];
+
+  for (let indexAlbum = 0; indexAlbum < collection.length; indexAlbum++) {
+    if (string === collection[indexAlbum]) {
+      newArray.push(collection[indexAlbum]);
     }
-
-    //returning the array
-    return array
-}// end showCollection
-
+  } //end of for loop
+  return newArray;
+} // end findByArtist
 
 /*---------Calling && Testing------------------*/
 //Adding 6 Artists to the collection
@@ -56,4 +70,8 @@ AddToCollection("Jay Z", "Reasonable Doubt", 1996);
 console.log("The Array should have 6 object elements", collection); // Output should be objects of the 6 artist that I added to the collection
 
 //loging  the showCollection that takes collection as an argument to the console
-console.log(showCollection(collection))
+console.log(showCollection(collection));
+
+//Testing findByArist and passing information that is within my collection and information that is not in my collection array.
+
+console.log(findByArtist("DMX"));
