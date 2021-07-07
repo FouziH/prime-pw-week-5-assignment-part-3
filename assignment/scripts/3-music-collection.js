@@ -71,6 +71,11 @@ function findByArtist(string) {
   return newArray;
 } // end findByArtist
 
+
+console.log("*******Stretch goals*********");
+
+
+
 /*---------Calling && Testing------------------*/
 //Adding 6 Artists to the collection
 AddToCollection("DMX", "...And Then There Was X", 1999);
