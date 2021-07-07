@@ -49,11 +49,25 @@ function findByArtist(string) {
   //creating a new array called newArray and initialized to and empty array
   let newArray = [];
 
-  for (let indexAlbum = 0; indexAlbum < collection.length; indexAlbum++) {
-    if (string === collection[indexAlbum]) {
-      newArray.push(collection[indexAlbum]);
+  for (let i = 0; i < collection.length; i++) {
+
+    //using the if statement to test if string parameter is equal to my collection[i].key value
+    if (
+      string === collection[i].title ||
+      string === collection[i].artist ||
+      string === collection[i].yearsPublished
+    ) {
+        //if a match is found, we are pusging collection[i] to the new array we declared above
+      newArray.push(collection[i]);
+
+      //loging the search result to the console
+      console.log(
+        `Search resulted in: ${collection[i].title} ${collection[i].artist} ${collection[i].yearsPublished}`
+      );
     }
-  } //end of for loop
+  }//end of for loop
+
+  //returning newArray
   return newArray;
 } // end findByArtist
 
@@ -67,11 +81,23 @@ AddToCollection("Dr. Dre", "Chronic 2001", 1999);
 AddToCollection("Jay Z", "Reasonable Doubt", 1996);
 
 //Loging the collection to the console
-console.log("The Array should have 6 object elements", collection); // Output should be objects of the 6 artist that I added to the collection
+console.log("The Array should have 6 object elements: ", collection); // Output should be objects of the 6 artist that I added to the collection
 
 //loging  the showCollection that takes collection as an argument to the console
 console.log(showCollection(collection));
 
 //Testing findByArist and passing information that is within my collection and information that is not in my collection array.
 
-console.log(findByArtist("DMX"));
+//1st test -- using the title of an album in my collection to see if I get an output
+
+//calling the findByArist function and passing an argument 
+findByArtist("Reasonable Doubt");
+
+// 2nd test -- using the years to test if I get a result back from my collections
+findByArtist(1999) // output should be 2 objects in my collection array DMX & Dr. Dr albums
+
+//3rd testing -- using information I know not to be in my collection array. 
+
+console.log(findByArtist("Biggie Smalls")) // output should be an empty array 
+
+
