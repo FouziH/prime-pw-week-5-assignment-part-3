@@ -31,6 +31,7 @@ function AddToCollection(title, artist, yearsPublished) {
 
 function showCollection(array) {
   //using for of to loop through the array
+  console.log("The length of the array is:", array.length)
   for (let getCollection of array) {
     //login the getcollection variable to the console
     console.log(
@@ -52,17 +53,13 @@ function findByArtist(string) {
   for (let i = 0; i < collection.length; i++) {
 
     //using the if statement to test if string parameter is equal to my collection[i].key value
-    if (
-      string === collection[i].title ||
-      string === collection[i].artist ||
-      string === collection[i].yearsPublished
-    ) {
-        //if a match is found, we are pusging collection[i] to the new array we declared above
+    if ( string === collection[i].artist ) {
+        //if a match is found, we are pushing collection[i] to the new array we declared above
       newArray.push(collection[i]);
 
       //loging the search result to the console
       console.log(
-        `Search resulted in: ${collection[i].title} ${collection[i].artist} ${collection[i].yearsPublished}`
+        `Search resulted in: ${collection[i].title}`
       );
     }
   }//end of for loop
@@ -74,6 +71,10 @@ function findByArtist(string) {
 
 console.log("*******Stretch goals*********");
 
+//Creating a function called search 
+function Search ( obj ) {
+  
+}
 
 
 /*---------Calling && Testing------------------*/
