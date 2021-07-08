@@ -4,106 +4,103 @@ console.log("***** Music Collection *****");
 
 let collection = [];
 
-// Add a function named `addToCollection`. This function should:
+//add a function named addToCollection. This. function should:
+//* take in the album's title, artist, yearPublished as input parameters
+//create a new object having the above properties
+//add the new object to the end of the collectoin array
+//return the newly created object
 
-//Creating a function called AddToCollection that
-//takes two parameters (title, artist, yearsPublished)
-
-function AddToCollection(title, artist, yearsPublished) {
-  console.log("In AddToColection");
-  //creating album object
+function addToCollection(title, artist, yearPublished) {
+  //creating new obj called album
   const album = {
     title: title,
     artist: artist,
-    yearsPublished: yearsPublished,
+    yearPublished: yearPublished,
   };
 
-  //Using the push method to push album to the collection
-  //array
   collection.push(album);
-
-  //shipping the newly created object
   return album;
-} //end AddToCollection
+}
 
-//Creating a function ShowCollection.
-//This function should take an array as a parameter
+//Add a function named showCollection. This function should:
+//Takes an array as a parameters
+//log the number of items in the arry
+//loop over the array and console.log each album's information formation like
+//Title by Artist, published in year
 
 function showCollection(array) {
-  //using for of to loop through the array
-  console.log("The length of the array is:", array.length)
-  for (let getCollection of array) {
-    //login the getcollection variable to the console
-    console.log(
-      `Album Information: ${getCollection.title} ${getCollection.artist} ${getCollection.yearsPublished}`
-    );
-    //console.log(collectionInfo);
-  }
+  //logn the length of my array collection
+  console.log("The length of the array is:", array.length);
 
+  //using for to loop through any array that is passed to showCollectionn
+  for (let i = 0; i < array.length; i++) {
+    //login each album information as the following
+    console.log(
+      `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}`
+    );
+  }
   //returning the array
   return array;
-} // end showCollection
+}
 
-//Adding a function name findByArtist
+//Add a function named findByArtist. This function should:
+// take in artist as a string parameter
+//create and array to hold any results, empty to starts
+//loop throught the collection and add any object with matching artist to the arry
+//return the array with matching results. if no result are found, return an empty array
 
 function findByArtist(string) {
-  //creating a new array called newArray and initialized to and empty array
+  // declared a new array and set it to empty
   let newArray = [];
 
+  // using for loop to loop through the collection array
   for (let i = 0; i < collection.length; i++) {
+    //using if statement to string param to my collection[i] spefically the artist property
+    if (string === collection[i].artist) {
+      //if string found matches any artist key, we are going to push collection[i].artist to the new array we declared above
+      newArray.push(collection[i].artist);
 
-    //using the if statement to test if string parameter is equal to my collection[i].key value
-    if ( string === collection[i].artist ) {
-        //if a match is found, we are pushing collection[i] to the new array we declared above
-      newArray.push(collection[i]);
-
-      //loging the search result to the console
-      console.log(
-        `Search resulted in: ${collection[i].title}`
-      );
+      //login the result of the serach to the console
+      console.log(`Your search resulted in: ${collection[i].artist}`);
     }
-  }//end of for loop
-
-  //returning newArray
+  }
+  // we are shipping the newArray
   return newArray;
-} // end findByArtist
-
+}
 
 console.log("*******Stretch goals*********");
 
-//Creating a function called search 
-function Search ( obj ) {
-  
-}
-
+//Creating a function called search
+function Search(obj) {}
 
 /*---------Calling && Testing------------------*/
 //Adding 6 Artists to the collection
-AddToCollection("DMX", "...And Then There Was X", 1999);
-AddToCollection("Nas", "illmatic X", 1994);
-AddToCollection("50 Cent", "Get Rich or Die Tryin", 2003);
-AddToCollection("Nipsey Hussle", "Victory Lap", 2018);
-AddToCollection("Dr. Dre", "Chronic 2001", 1999);
-AddToCollection("Jay Z", "Reasonable Doubt", 1996);
+addToCollection("...And Then There Was X", "DMX", 1999);
+addToCollection("Ilmatic", "Nas", 1994);
+addToCollection("Reasonable Doubt", "Jay Z", 1996);
+addToCollection("Get Rich or Die Trying", "50 Cent", 2003);
+addToCollection("Chronic 2001", "Dr. Dre", 1999);
+addToCollection("Victory Lap", "Nipsey Hussle", 2018);
+
+//login the acutal collection to the console
+showCollection(collection);
 
 //Loging the collection to the console
 console.log("The Array should have 6 object elements: ", collection); // Output should be objects of the 6 artist that I added to the collection
 
 //loging  the showCollection that takes collection as an argument to the console
-console.log(showCollection(collection));
+console.log(showCollection(collection)); //output should be 6 objects within the array
 
 //Testing findByArist and passing information that is within my collection and information that is not in my collection array.
 
 //1st test -- using the title of an album in my collection to see if I get an output
 
-//calling the findByArist function and passing an argument 
-findByArtist("Reasonable Doubt");
+//calling the findByArist function and passing an argument
+console.log(findByArtist("DMX")); // output should be "Your search resuled in: DMX"
 
-// 2nd test -- using the years to test if I get a result back from my collections
-findByArtist(1999) // output should be 2 objects in my collection array DMX & Dr. Dr albums
+// 2nd test -- searching for Nas to test if I get a result back from my collections
+console.log(findByArtist("Nas")); // output should be "Your search resuled in: Nas"
 
-//3rd testing -- using information I know not to be in my collection array. 
+//3rd testing -- using information I know not to be in my collection array.
 
-console.log(findByArtist("Biggie Smalls")) // output should be an empty array 
-
-
+console.log(findByArtist("Biggie Smalls")); // output should be an empty array  []
