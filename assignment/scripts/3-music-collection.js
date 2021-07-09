@@ -73,18 +73,41 @@ console.log("*******Stretch goals*********");
 
 //Creating a function called search
 function search(obj) {
+  //Declared a new array and set it to empty array 
   let newArray = [];
 
-  for (let getCollection of collection) {
+  //Declared a new object and set it empty object 
+  let newObject = {};
+
+  //using the for of loop to iterate through my collection 
+  for ( let getCollection of collection ) {
+
+    //using if statement to compare abject passed argument at key artist/ year to my getcollection at key artist/yearPublished 
     if ( obj.artist === getCollection.artist && obj.year === getCollection.yearPublished ) {
-      newArray.push(getCollection.artist, getCollection.yearPublished);
-    } else if ( !obj.artist === getCollection.artist && !obj.year === getCollection.yearPublished) {
-      return collection;
-    } else if (Object.keys(obj).length === 0) {
-      return collection;
-    }
+      //if match is found
+      //set newobject at key artist equal to getcollection at key artist
+      newObject.artist = getCollection.artist;
+      //if match is found
+      //set newobject at key year equal to getcollection at key yearPublsied
+      newObject.year = getCollection.yearPublished;
+
+      //push the newObject to the newArry
+      newArray.push(newObject);
+    } // end of If statement  
+    
   }
-  return newArray;
+  //If the newArray has length > 0 
+    if  ( newArray.length > 0   ) {
+
+      //retunr newAwaray 
+          return newArray;
+      } //end of if statment 
+      else { //begining of else statement 
+      
+        // return the collection 
+      return collection
+    }
+  
 }
 
 
