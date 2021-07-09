@@ -50,13 +50,14 @@ function showCollection(array) {
 //return the array with matching results. if no result are found, return an empty array
 
 function findByArtist(string) {
+  string = string.toLowerCase();
   // declared a new array and set it to empty
   let newArray = [];
 
   // using for loop to loop through the collection array
   for (let i = 0; i < collection.length; i++) {
     //using if statement to string param to my collection[i] spefically the artist property
-    if (string === collection[i].artist) {
+    if (string === collection[i].artist.toLowerCase()) {
       //if string found matches any artist key, we are going to push collection[i].artist to the new array we declared above
       newArray.push(collection[i].artist);
 
@@ -71,7 +72,22 @@ function findByArtist(string) {
 console.log("*******Stretch goals*********");
 
 //Creating a function called search
-function Search(obj) {}
+function search(obj) {
+  let newArray = [];
+
+  for (let getCollection of collection) {
+    if ( obj.artist === getCollection.artist && obj.year === getCollection.yearPublished ) {
+      newArray.push(getCollection.artist, getCollection.yearPublished);
+    } else if ( !obj.artist === getCollection.artist && !obj.year === getCollection.yearPublished) {
+      return collection;
+    } else if (Object.keys(obj).length === 0) {
+      return collection;
+    }
+  }
+  return newArray;
+}
+
+
 
 /*---------Calling && Testing------------------*/
 //Adding 6 Artists to the collection
@@ -96,11 +112,23 @@ console.log(showCollection(collection)); //output should be 6 objects within the
 //1st test -- using the title of an album in my collection to see if I get an output
 
 //calling the findByArist function and passing an argument
-console.log(findByArtist("DMX")); // output should be "Your search resuled in: DMX"
+console.log(findByArtist("nas")); // output should be "Your search resuled in: DMX"
 
 // 2nd test -- searching for Nas to test if I get a result back from my collections
-console.log(findByArtist("Nas")); // output should be "Your search resuled in: Nas"
+console.log(findByArtist("dmx")); // output should be "Your search resuled in: Nas"
 
 //3rd testing -- using information I know not to be in my collection array.
 
 console.log(findByArtist("Biggie Smalls")); // output should be an empty array  []
+
+
+//Testing the Search Function and passing an object that has information you would find in my collections
+
+console.log(search({ artist: "Nas", year: 1994 }));
+
+//When an empty object is passed,  the function is returning the collection array as a whole
+console.log(search({ }));
+
+//When I pass an object that has information that doesnt match my collection, the function shouuld return the whole collection array 
+
+console.log(search({ artist: "Ray Charles", year: 1957 }))
