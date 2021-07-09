@@ -16,6 +16,7 @@ function addToCollection(title, artist, yearPublished) {
     title: title,
     artist: artist,
     yearPublished: yearPublished,
+  
   };
 
   collection.push(album);
@@ -73,16 +74,16 @@ console.log("*******Stretch goals*********");
 
 //Creating a function called search
 function search(obj) {
-  //Declared a new array and set it to empty array 
+  //Declared a new array and set it to empty array
   let newArray = [];
 
-  //Declared a new object and set it empty object 
+  //Declared a new object and set it empty object
   let newObject = {};
 
-  //using the for of loop to iterate through my collection 
+  //using the for of loop to iterate through my collection
   for ( let getCollection of collection ) {
 
-    //using if statement to compare abject passed argument at key artist/ year to my getcollection at key artist/yearPublished 
+    //using if statement to compare abject passed argument at key artist/ year to my getcollection at key artist/yearPublished
     if ( obj.artist === getCollection.artist && obj.year === getCollection.yearPublished ) {
       //if match is found
       //set newobject at key artist equal to getcollection at key artist
@@ -93,22 +94,25 @@ function search(obj) {
 
       //push the newObject to the newArry
       newArray.push(newObject);
-    } // end of If statement  
-    
+    } // end of If statement
+
   }
-  //If the newArray has length > 0 
+  //If the newArray has length > 0
     if  ( newArray.length > 0   ) {
 
-      //retunr newAwaray 
+      //retunr newAwaray
           return newArray;
-      } //end of if statment 
-      else { //begining of else statement 
-      
-        // return the collection 
+      } //end of if statment
+      else { //begining of else statement
+
+        // return the collection
       return collection
     }
-  
+
 }
+
+
+
 
 
 
@@ -152,6 +156,6 @@ console.log(search({ artist: "Nas", year: 1994 }));
 //When an empty object is passed,  the function is returning the collection array as a whole
 console.log(search({ }));
 
-//When I pass an object that has information that doesnt match my collection, the function shouuld return the whole collection array 
+//When I pass an object that has information that doesnt match my collection, the function shouuld return the whole collection array
 
 console.log(search({ artist: "Ray Charles", year: 1957 }))
