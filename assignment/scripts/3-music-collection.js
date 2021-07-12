@@ -16,7 +16,7 @@ function addToCollection(title, artist, yearPublished) {
     title: title,
     artist: artist,
     yearPublished: yearPublished,
-  
+
   };
 
   collection.push(album);
